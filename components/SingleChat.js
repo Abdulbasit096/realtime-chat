@@ -1,7 +1,7 @@
 import React from 'react'
 import Moment from 'react-moment'
 
-function SingleChat({ img, current, message, timestamp }) {
+function SingleChat({ img, current, message }) {
   console.log(current)
   return (
     <div
@@ -22,9 +22,9 @@ function SingleChat({ img, current, message, timestamp }) {
       >
         <p className="w-3/5 flex-1">{message}</p>
 
-        <Moment fromNow className="text-xs font-medium text-grayish">
-          {timestamp.toDate()}
-        </Moment>
+        {/* <Moment fromNow className="text-xs font-medium text-grayish">
+          {timestamp}
+        </Moment> */}
       </div>
     </div>
   )

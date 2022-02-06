@@ -28,20 +28,21 @@ function Chats() {
         setChats(snapshotOne.docs)
       }
     )
+  }, [(db, session)])
+  
+  useEffect(() => {
     const chatsQueryTwo = onSnapshot(
       query(
         collection(db, 'chats'),
         where('invited', 'array-contains', session.user.email)
       ),
 
-      (snapshot) => {
-        if (snapshot.docs.length > 0) {
-          setChats((oldArray) => [...oldArray, snapshot.docs])
-        }
+      (snapshotTwo) => {
+        setChats((chats) => [...chats, ...snapshotTwo.docs])
       }
     )
   }, [(db, session)])
-  console.log(chats)
+
 
   return (
     <div className="h-screen  overflow-scroll rounded-2xl bg-background p-10 scrollbar-hide sm:m-8 sm:mx-auto sm:max-w-6xl">

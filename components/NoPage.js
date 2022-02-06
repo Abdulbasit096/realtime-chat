@@ -4,9 +4,9 @@ import { signIn } from 'next-auth/react';
 
 function NoPage() {
   return (
-    <div className="flex h-screen flex-col items-center justify-center space-y-4 mb-20 ">
+    <div className="flex h-screen flex-col items-center justify-center space-y-4  ">
       <div>
-        <ChatIcon className=" h-40 sm:h-80" />
+        <ChatIcon className=" h-40 sm:h-40" />
       </div>
       <div className="text-6xl font-bold">Chat Bot</div>
       <div className="font-semibold text-grayish">

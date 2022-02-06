@@ -7,7 +7,7 @@ import NoPage from '../components/NoPage'
 export default function Home() {
   const {data: session} = useSession()
   return (
-    <div className='font-body'>
+    <div className='font-body scrollbar-hide'>
       <Header/>
 
       {session ? <Chats/> :<NoPage/>}

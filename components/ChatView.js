@@ -30,7 +30,10 @@ function ChatView({ chat, chatId }) {
   useEffect(() => {
     if (chat) {
       onSnapshot(
-        query(collection(db, 'chats', chatId, 'messages')),
+        query(
+          collection(db, 'chats', chatId, 'messages'),
+          orderBy('timestamp', 'asc')
+        ),
         (snapshot) => {
           setMessages(snapshot.docs)
         }
@@ -45,11 +48,6 @@ function ChatView({ chat, chatId }) {
         by: session.user.uid,
         byImage: session.user.image,
         timestamp: serverTimestamp(),
-      }).then(async () => {
-       await updateDoc(doc(db, `chats/${chatId}`), {
-          lastMessage: message.current.value,
-        })
-        message.current.value = ''
       })
     }
   }
@@ -72,7 +70,7 @@ function ChatView({ chat, chatId }) {
   }
 
   return (
-    <div className="relative flex h-screen w-full flex-col items-start justify-start bg-slate-700">
+    <div className="relative flex h-screen w-full flex-col items-start justify-start bg-slate-700 scrollbar-hide">
       <div className="flex w-full items-center justify-between space-x-3 border-b border-grayish  p-2">
         <div>
           <img
@@ -90,12 +88,12 @@ function ChatView({ chat, chatId }) {
           <TrashIcon onClick={deleteChat} className="h-6 cursor-pointer" />
         </div>
       </div>
-      <div className="w-full flex-1 space-y-8 overflow-scroll p-4  ">
+      <div className="w-full flex-1 space-y-8 overflow-scroll p-4 scrollbar-hide  ">
         {messages.map((message) => (
           <SingleChat
             img={message.data().byImage}
             message={message.data().message}
-            timestamp={message.data().timestamp}
+            // timestamp={message.data().timestamp}
             current={message.data().by === session?.user.uid}
           />
         ))}

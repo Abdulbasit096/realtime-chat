@@ -40,10 +40,8 @@ function Chat() {
 
   return (
     <div>
-        {/* <Header/> */}
+      {passIsCorrect ? (
         <ChatView chat={chat} chatId = {chatID} />
-      {/* {passIsCorrect ? (
-        <ChatView chat={chat} />
       ) : (
         <div className="flex h-screen flex-col items-center justify-center  ">
           <div className="flex flex-col items-center space-y-5 rounded-lg bg-gray-100 py-20 px-8 shadow-lg">
@@ -65,7 +63,7 @@ function Chat() {
             </button>
           </div>
         </div>
-      )} */}
+      )}
     </div>
   )
 }
