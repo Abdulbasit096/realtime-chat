@@ -10,14 +10,14 @@ function SingleChat({ img, current, message }) {
       }`}
     >
       <img
-        className={`h-10 w-10  rounded-full ${current ? 'ml-2' : 'mr-2'}`}
+        className={`h-10 w-10 rounded-full ${current ? 'ml-2' : 'mr-2'}`}
         src={img}
         alt=""
       />
 
       <div
-        className={`flex w-4/5 items-center rounded-xl ${
-          current ? 'bg-darkPurple' : 'bg-slate-300'
+        className={`flex w-fit text-2xl items-center rounded-md ${
+          current ? 'bg-slate-700' : 'bg-slate-300'
         } px-3 py-1`}
       >
         <p className="w-3/5 flex-1">{message}</p>
